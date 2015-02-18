@@ -29,6 +29,6 @@ end;
     call fun1();
     drop procedure  IF EXISTS fun1;
     
-    ALTER TABLE test2 ADD FULLTEXT  (mytext);
+   /* ALTER TABLE test2 ADD FULLTEXT  (mytext);
 
- /*   SELECT num FROM test2;*/
+   SELECT num FROM test2;*/
