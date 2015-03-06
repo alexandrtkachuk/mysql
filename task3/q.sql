@@ -21,7 +21,11 @@ SELECT * FROM task3_TABLE_A
 INNER JOIN task3_TABLE_B
 ON task3_TABLE_A.name = task3_TABLE_B.name;
 
+SHOW SESSION STATUS LIKE 'Last_query_cost';
 
+explain SELECT * FROM task3_TABLE_A
+INNER JOIN task3_TABLE_B
+ON task3_TABLE_A.name = task3_TABLE_B.name;
 
 
 SELECT * FROM task3_TABLE_A LEFT JOIN task3_TABLE_B 
@@ -30,19 +34,36 @@ UNION
 SELECT * FROM task3_TABLE_A RIGHT JOIN task3_TABLE_B 
 ON  task3_TABLE_A.name = task3_TABLE_B.name;
 
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain SELECT * FROM task3_TABLE_A LEFT JOIN task3_TABLE_B 
+ON  task3_TABLE_A.name = task3_TABLE_B.name
+UNION 
+SELECT * FROM task3_TABLE_A RIGHT JOIN task3_TABLE_B 
+ON  task3_TABLE_A.name = task3_TABLE_B.name;
 
 
 SELECT * FROM task3_TABLE_A A
 LEFT OUTER JOIN task3_TABLE_B B
 ON A.name = B.name;
 
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain  SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B
+ON A.name = B.name;
 
 SELECT * FROM task3_TABLE_A A
 LEFT OUTER JOIN task3_TABLE_B B 
 ON A.name = B.name
 WHERE B.id IS null;
 
+SHOW SESSION STATUS LIKE 'Last_query_cost';
 
+explain SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE B.id IS null;
 
 SELECT * FROM task3_TABLE_A A
 LEFT OUTER JOIN task3_TABLE_B B 
@@ -54,5 +75,90 @@ RIGHT OUTER JOIN task3_TABLE_B B
 ON A.name = B.name
 WHERE B.id IS null;
 
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE A.id IS null
+UNION
+SELECT * FROM task3_TABLE_A A
+RIGHT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE B.id IS null;
+
+ALTER TABLE task3_TABLE_A ADD INDEX  (id);
+ALTER TABLE task3_TABLE_A ADD INDEX  (name);
+
+ALTER TABLE task3_TABLE_B ADD INDEX  (id);
+ALTER TABLE task3_TABLE_B ADD INDEX  (name);
+
+SELECT * FROM task3_TABLE_A
+INNER JOIN task3_TABLE_B
+ON task3_TABLE_A.name = task3_TABLE_B.name;
+
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain SELECT * FROM task3_TABLE_A
+INNER JOIN task3_TABLE_B
+ON task3_TABLE_A.name = task3_TABLE_B.name;
 
 
+SELECT * FROM task3_TABLE_A LEFT JOIN task3_TABLE_B 
+ON  task3_TABLE_A.name = task3_TABLE_B.name
+UNION 
+SELECT * FROM task3_TABLE_A RIGHT JOIN task3_TABLE_B 
+ON  task3_TABLE_A.name = task3_TABLE_B.name;
+
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain SELECT * FROM task3_TABLE_A LEFT JOIN task3_TABLE_B 
+ON  task3_TABLE_A.name = task3_TABLE_B.name
+UNION 
+SELECT * FROM task3_TABLE_A RIGHT JOIN task3_TABLE_B 
+ON  task3_TABLE_A.name = task3_TABLE_B.name;
+
+
+SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B
+ON A.name = B.name;
+
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain  SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B
+ON A.name = B.name;
+
+SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE B.id IS null;
+
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE B.id IS null;
+
+SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE A.id IS null
+UNION
+SELECT * FROM task3_TABLE_A A
+RIGHT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE B.id IS null;
+
+SHOW SESSION STATUS LIKE 'Last_query_cost';
+
+explain SELECT * FROM task3_TABLE_A A
+LEFT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE A.id IS null
+UNION
+SELECT * FROM task3_TABLE_A A
+RIGHT OUTER JOIN task3_TABLE_B B 
+ON A.name = B.name
+WHERE B.id IS null;
