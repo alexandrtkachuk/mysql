@@ -7,6 +7,7 @@ CREATE TABLE shop_users (id INT NOT NULL AUTO_INCREMENT ,
     name VARCHAR(32),
     pass VARCHAR(128),
     email VARCHAR(64),
+    role INT,
     PRIMARY KEY (id) );
 
 DROP TABLE IF EXISTS shop_book2user;
@@ -21,6 +22,7 @@ CREATE TABLE shop_orders (id INT NOT NULL AUTO_INCREMENT ,
         oderDate DATETIME,  
         PRIMARY KEY (id) );
 
-
+DROP TABLE IF EXISTS shop_sale2user;
+CREATE TABLE shop_sale2user (idUser INT , sale INT);
 
 
