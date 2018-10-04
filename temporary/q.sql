@@ -1,0 +1,15 @@
+
+
+CREATE TEMPORARY TABLE   A  (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(32),
+  PRIMARY KEY (id)
+);
+
+
+INSERT INTO A ( name) VALUES ( md5(RAND()) );
+INSERT INTO A ( name) VALUES ( md5(RAND()) );
+INSERT INTO A ( name) VALUES ( md5(RAND()) );
+INSERT INTO A ( name) VALUES ( md5(RAND()) );
+
+SELECT * FROM A;
